@@ -7,29 +7,16 @@ let easyBtn=document.querySelector("#easy")
 let hardBtn=document.querySelector("#hard")
 let modeBtn=document.querySelectorAll(".mode")
 const h1=document.querySelector("h1")
-//console.log(square)
 let colors=generateRandomColor(numSquares)
-// [
-// "rgb(255, 0, 0)",
-//  "rgb(255, 255, 0)",
-//  "rgb(255, 255, 255)",
-//  "rgb(0, 255, 0)",
-//  "rgb(255, 0, 255)",
-//  "rgb(0, 0, 255)",
-// ]
-// const pickedColor=pickRandomColor(colors)
 let pickedColor=colors[pickRandomColor()]
-// console.log(pickedColor)
 displayColor.innerHTML=pickedColor
 function matchColor(color){
 	for(let i=0;i<square.length;i++){
-		// console.log(square[i])
 		square[i].style.backgroundColor=color;
 	}
 }
 function pickRandomColor(){
 	return Math.floor(Math.random()*colors.length)
-	// return  colors[randomNum]
 }
 
 //generate random color
@@ -49,20 +36,13 @@ function generateRandomColor(num){
 for(let i=0;i<square.length;i++){
 	square[i].style.backgroundColor=colors[i];
 	square[i].addEventListener("click",function(){
-		// alert("You clicked inside square");
-		// alert(this.style.backgroundColor)
 		let choosenColor=this.style.backgroundColor;
-		// console.log(choosenColor)
-		//Compare with pickedColor
 		if(choosenColor===pickedColor){
 			h1.style.backgroundColor=pickedColor
 			message.textContent="Correct"
-			// square[i].style.backgroundColor=pickedColor
 			matchColor(pickedColor)
-			// alert('You are right')
 			reset.textContent="Play Again?"
 		}else{
-			// alert("You are wrong")
 			message.textContent="Try Again"
 			this.style.backgroundColor="#232323";
 		}
@@ -70,11 +50,7 @@ for(let i=0;i<square.length;i++){
 }
 
 reset.addEventListener('click',()=>{
-	// alert("You clicked reset")
-	//generate new colors
 	colors=generateRandomColor(numSquares)
-	// console.log(colors)
-	//pick a color
 	pickedColor=colors[pickRandomColor()]
 	//Show this in DisplayColor
 	displayColor.innerHTML=pickedColor
@@ -83,7 +59,6 @@ reset.addEventListener('click',()=>{
 		square[i].style.backgroundColor=colors[i]
 	}  
 	message.textContent=""
-	// this.textContent="New Colors"  Not Working using this because of arrao function
 	reset.textContent="New Colors"
 })
 // easyBtn.addEventListener("click",function(){
